@@ -12,7 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class WikipediaTests {
+public class WikipediaTests extends SelenoidTestBase {
 
   @AllureId("7181")
   @Test

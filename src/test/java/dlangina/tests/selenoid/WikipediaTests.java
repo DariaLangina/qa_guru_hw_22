@@ -24,16 +24,16 @@ public class WikipediaTests extends SelenoidTestBase {
     step("Open menu", () ->
              $(MobileBy.id("org.wikipedia.alpha:id/menu_icon")).click()
         );
-    step("Open settings", () ->
+    step("Открытие 'Настройки'", () ->
              $(MobileBy.id("org.wikipedia.alpha:id/main_drawer_settings_container")).click()
         );
-    step("Open 'Wikipedia languages' section", () ->
+    step("Открытие 'Wikipedia languages' section", () ->
              $(MobileBy.xpath(("//*[@text='Wikipedia languages']"))).click()
         );
-    step("Click 'Add language' button", () ->
+    step("Нажатие кнопки 'Add language'", () ->
              $(MobileBy.xpath(("//*[@text='ADD LANGUAGE']"))).click()
         );
-    step("Search and select Russian language", () -> {
+    step("Поиск и выбор языка Русский", () -> {
            $(MobileBy.id("org.wikipedia.alpha:id/menu_search_language")).click();
            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).setValue("russian");
            $(MobileBy.id("org.wikipedia.alpha:id/localized_language_name")).shouldHave(text("Русский"))
@@ -41,7 +41,7 @@ public class WikipediaTests extends SelenoidTestBase {
          }
         );
     back();
-    step("Check 'Wikipedia languages' has russian language", () ->
+    step("Проверка наличия выбранного языка", () ->
              $(MobileBy.xpath(("//*[@text='English, Русский']"))).shouldBe(visible)
         );
   }

@@ -1,8 +1,9 @@
-package dlangina.tests.selenoid;
+package dlangina.tests.selenoid.android;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
+import static dlangina.helpers.Attach.getSessionId;
 
 import com.codeborne.selenide.Configuration;
 import dlangina.drivers.SelenoidMobileDriver;
@@ -34,9 +35,10 @@ public class SelenoidTestBase {
 
   @AfterEach
   public void afterEach() {
+    String sessionId = getSessionId();
     Attach.screenshotAs("Last screenshot");
     Attach.pageSource();
     closeWebDriver();
-//    Attach.addVideo();
+    Attach.attachVideo(sessionId);
   }
 }

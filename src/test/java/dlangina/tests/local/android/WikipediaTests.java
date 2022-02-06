@@ -1,10 +1,12 @@
-package dlangina.tests.local;
+package dlangina.tests.local.android;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.value;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.back;
 
+import dlangina.tests.local.android.LocalTestBase;
 import io.appium.java_client.MobileBy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -14,9 +16,9 @@ public class WikipediaTests extends LocalTestBase {
 
   @Test
   @Tag("Local")
-  @DisplayName("Проверка страниц getting started")
+  @DisplayName("Local. Проверка страниц getting started")
   void onboardingWikipediaTest() {
-    //back();
+    back();
     $(MobileBy.id("org.wikipedia.alpha:id/primaryTextView"))
         .shouldHave(text("The Free Encyclopedia …in over 300 languages"));
     $(MobileBy.id("org.wikipedia.alpha:id/fragment_onboarding_forward_button")).click();

@@ -12,11 +12,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Attach {
 
-  @Attachment(value = "{attachName}", type = "text/plain")
-  public static String attachAsText(String attachName, String message) {
-    return message;
-  }
-
   @Attachment(value = "Page source", type = "text/plain")
   public static byte[] pageSource() {
     return getWebDriver().getPageSource().getBytes(StandardCharsets.UTF_8);
@@ -27,26 +22,34 @@ public class Attach {
     return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
   }
 
-  @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
-  public static String addVideo() {
-    return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
-           + getVideoUrl(getSessionId())
-           + "' type='video/mp4'></video></body></html>";
-  }
+  public static String getVideoUrl(String sessionId) {
+    String deviceFarm = System.getProperty("deviceFarm");
 
-  public static URL getVideoUrl(String sessionId) {
-    String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId + ".mp4";
-
-    try {
-      return new URL(videoUrl);
-    } catch (MalformedURLException e) {
-      e.printStackTrace();
+    if(deviceFarm.equals("browserstack")) {
+      return Browserstack.videoUrl(sessionId);
+    } else if(deviceFarm.equals("selenoid")) {
+      return getSelenoidVideoUrl(sessionId);
     }
     return null;
   }
 
+  @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
+  public static String attachVideo(String sessionId) {
+    return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
+           + getVideoUrl(sessionId)
+           + "' type='video/mp4'></video></body></html>";
+  }
 
   public static String getSessionId() {
     return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+  }
+
+  public static String getSelenoidVideoUrl(String sessionId) {
+    try {
+      return new URL("https://selenoid.autotests.cloud/video/" + sessionId + ".mp4") + "";
+    } catch (MalformedURLException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 }

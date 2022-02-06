@@ -1,4 +1,4 @@
-package dlangina.tests.local;
+package dlangina.tests.local.android;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;

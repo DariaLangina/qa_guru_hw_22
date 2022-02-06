@@ -16,6 +16,4 @@ public interface BrowserStackConfig extends Config {
   @Key("key")
   String key();
 
-  @Key("device")
-  String device();
 }

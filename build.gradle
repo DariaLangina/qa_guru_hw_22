@@ -72,5 +72,4 @@ task browserstack_android(type: Test) {
         includeTags 'Browserstack'
     }
     systemProperty "deviceFarm", "browserstack_android"
-    systemProperty "device", "device"
 }

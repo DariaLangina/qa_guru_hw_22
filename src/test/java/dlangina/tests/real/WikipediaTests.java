@@ -1,4 +1,4 @@
-package dlangina.tests.local.android;
+package dlangina.tests.real;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.value;
@@ -11,10 +11,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class WikipediaTests extends LocalTestBase {
+public class WikipediaTests extends RealTestBase {
 
   @Test
-  @Tag("Local")
+  @Tag("Real")
   @DisplayName("Проверка страниц getting started")
   void gettingStartedWikipediaTest() {
     back();

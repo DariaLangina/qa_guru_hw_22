@@ -58,18 +58,26 @@ task selenide_android(type: Test) {
     useJUnitPlatform {
         includeTags 'Local'
     }
+    systemProperty "deviceHost", "local"
 }
 
-task selenoid_android(type: Test) {
+task real(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Real'
+    }
+    systemProperty "deviceHost", "real"
+}
+
+task selenoid(type: Test) {
     useJUnitPlatform {
         includeTags 'Selenoid'
     }
-    systemProperty "deviceFarm", "selenoid_android"
+    systemProperty "deviceHost", "selenoid"
 }
 
-task browserstack_android(type: Test) {
+task browserstack(type: Test) {
     useJUnitPlatform {
         includeTags 'Browserstack'
     }
-    systemProperty "deviceFarm", "browserstack_android"
+    systemProperty "deviceHost", "browserstack"
 }

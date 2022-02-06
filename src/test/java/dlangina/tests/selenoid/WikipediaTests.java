@@ -22,28 +22,27 @@ public class WikipediaTests extends SelenoidTestBase {
   void settingLanguageTest() {
     back();
 
-    step("Открытие меню", () ->
+    step("Open menu", () ->
              $(MobileBy.id("org.wikipedia.alpha:id/menu_icon")).click()
         );
-    step("Открытие 'Настройки'", () ->
+    step("Open settings", () ->
              $(MobileBy.id("org.wikipedia.alpha:id/main_drawer_settings_container")).click()
         );
-    step("Открытие 'Wikipedia languages' раздел", () ->
+    step("Open 'Wikipedia languages' section", () ->
              $(MobileBy.xpath(("//*[@text='Wikipedia languages']"))).click()
         );
-    step("Нажатие кнопки 'Add language'", () ->
+    step("Click 'Add language' button", () ->
              $(MobileBy.xpath(("//*[@text='ADD LANGUAGE']"))).click()
         );
-    step("Поиск и выбор языка 'Русский'", () -> {
+    step("Search and select Russian language", () -> {
            $(MobileBy.id("org.wikipedia.alpha:id/menu_search_language")).click();
            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).setValue("russian");
-           $(MobileBy.id("org.wikipedia.alpha:id/localized_language_name"))
-               .shouldHave(text("Русский"))
-               .click();
+           $(MobileBy.id("org.wikipedia.alpha:id/localized_language_name")).shouldHave(text("Русский")).click();
          }
         );
     back();
-    step("Проверка наличия выбранного языка", () ->
-        $(byText("Русский")).shouldBe(visible));
+    step("Check 'Wikipedia languages' has russian language", () ->
+             $(MobileBy.xpath(("//*[@text='English, Русский']"))).shouldBe(visible)
+        );
   }
 }

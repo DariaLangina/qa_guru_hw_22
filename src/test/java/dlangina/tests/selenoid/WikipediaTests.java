@@ -2,6 +2,7 @@ package dlangina.tests.selenoid;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.back;
 import static io.qameta.allure.Allure.step;
@@ -21,19 +22,19 @@ public class WikipediaTests extends SelenoidTestBase {
   void settingLanguageTest() {
     back();
 
-    step("Open menu", () ->
+    step("Открытие меню", () ->
              $(MobileBy.id("org.wikipedia.alpha:id/menu_icon")).click()
         );
     step("Открытие 'Настройки'", () ->
              $(MobileBy.id("org.wikipedia.alpha:id/main_drawer_settings_container")).click()
         );
-    step("Открытие 'Wikipedia languages' section", () ->
+    step("Открытие 'Wikipedia languages' раздел", () ->
              $(MobileBy.xpath(("//*[@text='Wikipedia languages']"))).click()
         );
     step("Нажатие кнопки 'Add language'", () ->
              $(MobileBy.xpath(("//*[@text='ADD LANGUAGE']"))).click()
         );
-    step("Поиск и выбор языка Русский", () -> {
+    step("Поиск и выбор языка 'Русский'", () -> {
            $(MobileBy.id("org.wikipedia.alpha:id/menu_search_language")).click();
            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).setValue("russian");
            $(MobileBy.id("org.wikipedia.alpha:id/localized_language_name")).shouldHave(text("Русский"))
@@ -42,7 +43,6 @@ public class WikipediaTests extends SelenoidTestBase {
         );
     back();
     step("Проверка наличия выбранного языка", () ->
-             $(MobileBy.xpath(("//*[@text='English, Русский']"))).shouldBe(visible)
-        );
+             $(byText("Русский")).shouldBe(visible));
   }
 }

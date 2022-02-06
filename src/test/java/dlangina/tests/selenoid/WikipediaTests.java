@@ -37,12 +37,13 @@ public class WikipediaTests extends SelenoidTestBase {
     step("Поиск и выбор языка 'Русский'", () -> {
            $(MobileBy.id("org.wikipedia.alpha:id/menu_search_language")).click();
            $(MobileBy.id("org.wikipedia.alpha:id/search_src_text")).setValue("russian");
-           $(MobileBy.id("org.wikipedia.alpha:id/localized_language_name")).shouldHave(text("Русский"))
-                                                                           .click();
+           $(MobileBy.id("org.wikipedia.alpha:id/localized_language_name"))
+               .shouldHave(text("Русский"))
+               .click();
          }
         );
     back();
     step("Проверка наличия выбранного языка", () ->
-             $(byText("Русский")).shouldBe(visible));
+        $(byText("Русский")).shouldBe(visible));
   }
 }

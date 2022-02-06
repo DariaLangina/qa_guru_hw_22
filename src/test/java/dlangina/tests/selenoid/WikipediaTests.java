@@ -43,6 +43,6 @@ public class WikipediaTests extends SelenoidTestBase {
         );
     back();
     step("Проверка наличия выбранного языка", () ->
-             $(byText("Русский")).shouldBe(visible));
+        $(byText("Русский")).shouldBe(visible));
   }
 }

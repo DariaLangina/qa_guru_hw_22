@@ -15,7 +15,4 @@ public interface BrowserStackConfig extends Config {
 
   @Key("key")
   String key();
-
-  @Key("browserStackUrl")
-  String browserStackUrl();
 }

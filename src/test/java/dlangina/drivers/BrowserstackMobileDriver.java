@@ -42,7 +42,7 @@ public class BrowserstackMobileDriver implements WebDriverProvider {
 
   public static URL getBrowserStackUrl() {
     try {
-      return new URL(browserStackConfig.browserStackUrl());
+      return new URL("http://hub.browserstack.com/wd/hub");
     } catch (MalformedURLException e) {
       throw new RuntimeException(e);
     }

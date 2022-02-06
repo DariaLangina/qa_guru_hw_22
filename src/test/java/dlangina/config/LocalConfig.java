@@ -2,19 +2,15 @@ package dlangina.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({
-        "classpath:mobile.properties"
-})
+@Config.Sources({"classpath:local.properties"})
 public interface LocalConfig extends Config {
 
-    @Key("emulatorName")
-    String emulatorName();
+  @Key("emulatorName")
+  String emulatorName();
 
-    @Key("emulatorVersion")
-    String emulatorVersion();
+  @Key("emulatorVersion")
+  String emulatorVersion();
 
-    @Key("appPath")
-    String appPath();
-
-
+  @Key("appPath")
+  String appPath();
 }

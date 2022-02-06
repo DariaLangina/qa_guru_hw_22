@@ -23,11 +23,11 @@ public class Attach {
   }
 
   public static String getVideoUrl(String sessionId) {
-    String deviceFarm = System.getProperty("deviceFarm");
+    String deviceHost = System.getProperty("deviceHost");
 
-    if(deviceFarm.equals("browserstack")) {
+    if(deviceHost.equals("browserstack")) {
       return Browserstack.videoUrl(sessionId);
-    } else if(deviceFarm.equals("selenoid")) {
+    } else if(deviceHost.equals("selenoid")) {
       return getSelenoidVideoUrl(sessionId);
     }
     return null;

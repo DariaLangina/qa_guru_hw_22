@@ -2,7 +2,9 @@ package dlangina.config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources({"classpath:mobile/browserstack.properties"})
+@Config.LoadPolicy(Config.LoadType.MERGE)
+@Config.Sources({"system:properties",
+    "classpath:browserstack.properties"})
 public interface BrowserStackConfig extends Config {
 
   @Key("app")
@@ -13,4 +15,7 @@ public interface BrowserStackConfig extends Config {
 
   @Key("key")
   String key();
+
+  @Key("device")
+  String device();
 }

@@ -71,5 +71,6 @@ task browserstack_android(type: Test) {
     useJUnitPlatform {
         includeTags 'Browserstack'
     }
+    systemProperties(System.getProperties())
     systemProperty "deviceFarm", "browserstack_android"
 }
